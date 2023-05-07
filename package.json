@@ -12,7 +12,7 @@
     "monkey-extra": "0.0.1-alpha.3",
     "prettier": "2.8.8",
     "typescript": "^5.0.4",
-    "vite": "^4.2.2",
-    "vite-plugin-monkey": "^3.1.4"
+    "vite": "^4.3.5",
+    "vite-plugin-monkey": "^3.2.0"
   }
 }

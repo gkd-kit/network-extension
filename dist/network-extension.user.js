@@ -7,13 +7,22 @@
 // @icon         https://vitejs.dev/logo.svg
 // @match        http://*/*
 // @match        https://*/*
+// @grant        GM_getValue
+// @grant        GM_registerMenuCommand
+// @grant        GM_setValue
+// @grant        GM_unregisterMenuCommand
 // @grant        GM_xmlhttpRequest
 // @grant        unsafeWindow
+// @noframes
 // ==/UserScript==
 
 (function () {
   'use strict';
 
+  var _GM_getValue = /* @__PURE__ */ (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
+  var _GM_registerMenuCommand = /* @__PURE__ */ (() => typeof GM_registerMenuCommand != "undefined" ? GM_registerMenuCommand : void 0)();
+  var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
+  var _GM_unregisterMenuCommand = /* @__PURE__ */ (() => typeof GM_unregisterMenuCommand != "undefined" ? GM_unregisterMenuCommand : void 0)();
   var _GM_xmlhttpRequest = /* @__PURE__ */ (() => typeof GM_xmlhttpRequest != "undefined" ? GM_xmlhttpRequest : void 0)();
   var _unsafeWindow = /* @__PURE__ */ (() => typeof unsafeWindow != "undefined" ? unsafeWindow : void 0)();
   var delay = async (n = 0) => new Promise((res) => {
@@ -102,10 +111,61 @@
       (_a2 = request.signal) == null ? void 0 : _a2.addEventListener("abort", abortXhr);
     });
   };
-  const GmNetworkExtension = {
-    GM_xmlhttpRequest: _GM_xmlhttpRequest,
-    GM_fetch
+  const useCheckedMenu = (name, initValue = false) => {
+    let checked = initValue;
+    const falseName = "❌" + name;
+    const trueName = "✅" + name;
+    const currentName = () => checked ? trueName : falseName;
+    const register = () => {
+      _GM_registerMenuCommand(currentName(), () => {
+        onChange(!checked);
+      });
+    };
+    const unregister = () => {
+      _GM_unregisterMenuCommand(currentName());
+    };
+    let onChange = (checked2) => {
+      controller.checked = checked2;
+    };
+    const controller = {
+      get checked() {
+        return checked;
+      },
+      set checked(newValue) {
+        if (newValue == checked)
+          return;
+        unregister();
+        checked = newValue;
+        register();
+      },
+      get onChange() {
+        return onChange;
+      },
+      set onChange(newFn) {
+        onChange = newFn;
+      }
+    };
+    register();
+    return controller;
   };
-  Object.assign(_unsafeWindow, { GmNetworkExtension });
+  const storeKey = `inject_network:` + location.origin;
+  const menu = useCheckedMenu(
+    `inject api to current website`,
+    _GM_getValue(storeKey, false)
+  );
+  menu.onChange = (checked) => {
+    menu.checked = checked;
+    _GM_setValue(storeKey, checked);
+    setTimeout(() => {
+      location.reload();
+    });
+  };
+  if (menu.checked) {
+    const __GmNetworkExtension = {
+      GM_xmlhttpRequest: _GM_xmlhttpRequest,
+      GM_fetch
+    };
+    Object.assign(_unsafeWindow, { __GmNetworkExtension });
+  }
 
 })();

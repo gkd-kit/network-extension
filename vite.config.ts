@@ -17,6 +17,7 @@ export default defineConfig(({ command }) => {
             command == 'serve'
               ? [`https://i.songe.li/*`]
               : [`http://*/*`, `https://*/*`],
+          noframes: true,
         },
       }),
     ],
