@@ -1,10 +1,10 @@
 {
   "name": "network-extension",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "serve": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
