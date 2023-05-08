@@ -7,6 +7,7 @@
 // @icon         https://vitejs.dev/logo.svg
 // @match        http://*/*
 // @match        https://*/*
+// @connect      *
 // @grant        GM_getValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_setValue
