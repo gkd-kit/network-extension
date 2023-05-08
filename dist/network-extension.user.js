@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         network-extension
 // @namespace    https://github.com/lisonge
-// @version      1.0.1
+// @version      1.0.2
 // @author       lisonge
 // @description  network-extension
 // @icon         https://vitejs.dev/logo.svg
@@ -113,8 +113,8 @@
   };
   const useCheckedMenu = (name, initValue = false) => {
     let checked = initValue;
-    const falseName = "❌" + name;
-    const trueName = "✅" + name;
+    const falseName = "❌ " + name;
+    const trueName = "✅ " + name;
     const currentName = () => checked ? trueName : falseName;
     const register = () => {
       _GM_registerMenuCommand(currentName(), () => {
