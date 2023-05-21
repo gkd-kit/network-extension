@@ -2,20 +2,20 @@ lockfileVersion: '6.0'
 
 dependencies:
   monkey-extra:
-    specifier: 0.0.1-alpha.3
-    version: 0.0.1-alpha.3(vite-plugin-monkey@3.2.0)
+    specifier: 0.0.1-alpha.5
+    version: 0.0.1-alpha.5(vite-plugin-monkey@3.2.1)
   prettier:
-    specifier: 2.8.8
+    specifier: ^2.8.8
     version: 2.8.8
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
   vite:
-    specifier: ^4.3.5
-    version: 4.3.5
+    specifier: ^4.3.8
+    version: 4.3.8
   vite-plugin-monkey:
-    specifier: ^3.2.0
-    version: 3.2.0(vite@4.3.5)
+    specifier: ^3.2.1
+    version: 3.2.1(vite@4.3.8)
 
 packages:
 
@@ -370,12 +370,12 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /monkey-extra@0.0.1-alpha.3(vite-plugin-monkey@3.2.0):
-    resolution: {integrity: sha512-wcH4Wzf0Q+u1k9ZHNlf2RWhGkeEzSax7iR638+boKpCjxL8JHJFh1hokcqR0VzXlU2y39wlQEWPtKnIjdRPm8w==}
+  /monkey-extra@0.0.1-alpha.5(vite-plugin-monkey@3.2.1):
+    resolution: {integrity: sha512-1kzBF/9+T1NgxczuT+rgiJqH3kVERncRfbFYp8+LCONoZYWb5CXo4EtPS6w1Njgw3kLlIx5TNGtJJK6ERJjJRw==}
     peerDependencies:
       vite-plugin-monkey: '*'
     dependencies:
-      vite-plugin-monkey: 3.2.0(vite@4.3.5)
+      vite-plugin-monkey: 3.2.1(vite@4.3.8)
     dev: false
 
   /mrmime@1.0.1:
@@ -461,8 +461,8 @@ packages:
     hasBin: true
     dev: false
 
-  /vite-plugin-monkey@3.2.0(vite@4.3.5):
-    resolution: {integrity: sha512-zXnDyDRmyelmAMZG5anbUdkRmynXpnvAnRCapEWKTdHF99bgT+XXa5LOJCdg/6kyddPcRyt2KCKI8fom+A0mFw==}
+  /vite-plugin-monkey@3.2.1(vite@4.3.8):
+    resolution: {integrity: sha512-Fow23Ndvkekpke8zcpr+ggaqNSMtRI9O8FYTM0c2c8unz11W/dwcfRg1MEZs0Q9/SNvSN3RKbXIOaGJXGT6xfg==}
     engines: {node: ^14.18 || >= 16, pnpm: '>=6'}
     peerDependencies:
       vite: '>=3.0.0'
@@ -479,13 +479,13 @@ packages:
       open: 8.4.2
       picocolors: 1.0.0
       systemjs: 6.14.1
-      vite: 4.3.5
+      vite: 4.3.8
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /vite@4.3.5:
-    resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
+  /vite@4.3.8:
+    resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:

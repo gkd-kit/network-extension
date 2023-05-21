@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         network-extension
 // @namespace    https://github.com/lisonge
-// @version      1.0.3
+// @version      1.0.4
 // @author       lisonge
 // @description  network-extension
 // @icon         https://vitejs.dev/logo.svg
@@ -77,6 +77,7 @@
         data,
         binary,
         responseType: "blob",
+        timeout: 5e3,
         async onload(e) {
           await delay();
           const resp = new Response(e.response ?? e.responseText, {
