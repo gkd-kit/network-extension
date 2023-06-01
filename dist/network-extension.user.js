@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         network-extension
 // @namespace    https://github.com/lisonge
-// @version      1.0.4
+// @version      1.0.5
 // @author       lisonge
 // @description  network-extension
 // @icon         https://vitejs.dev/logo.svg
