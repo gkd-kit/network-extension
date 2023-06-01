@@ -53,13 +53,13 @@
       return url;
     }
   };
-  var GM_fetch = async (input, init = {}) => {
+  var GM_fetch = async (input, init = {}, xhrDetails = {}) => {
     var _a;
     const request = new Request(input, init);
     if ((_a = request.signal) == null ? void 0 : _a.aborted) {
       throw new DOMException("Aborted", "AbortError");
     }
-    const data = await request.text();
+    const data = await request.blob();
     let binary = true;
     const headers = {};
     request.headers.forEach((value, key) => {
@@ -71,6 +71,7 @@
     return new Promise((resolve, reject) => {
       var _a2;
       const handle = _GM_xmlhttpRequest({
+        ...xhrDetails,
         method: request.method.toUpperCase(),
         url: fixUrl(request.url),
         headers,
