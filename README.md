@@ -8,7 +8,6 @@ some tool websites need `GM_xmlhttpRequest` api to request the resource of other
 // if enabled, set
 window.__GmNetworkExtension = {
   GM_xmlhttpRequest,
-  GM_fetch,
 };
 ```
 

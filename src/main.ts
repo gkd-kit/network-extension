@@ -1,5 +1,10 @@
-import { GM_getValue, GM_setValue, GM_xmlhttpRequest, unsafeWindow } from '$';
-import { GM_fetch } from 'monkey-extra';
+import {
+  GM_getValue,
+  GM_setValue,
+  GM_xmlhttpRequest,
+  unsafeWindow,
+  GM_info,
+} from '$';
 import { useCheckedMenu } from './utils';
 
 const defaultValue = [
@@ -25,8 +30,8 @@ menu.onChange = (checked) => {
 
 if (menu.checked) {
   const __GmNetworkExtension = {
+    GM_info,
     GM_xmlhttpRequest,
-    GM_fetch,
   };
   Object.assign(unsafeWindow, { __GmNetworkExtension });
 }
