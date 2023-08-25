@@ -1,9 +1,15 @@
 import { GM_registerMenuCommand, GM_unregisterMenuCommand } from '$';
 
-export const useCheckedMenu = (name: string, initValue = false) => {
+export const useCheckedMenu = ({
+  checkedTag = '✅\x20',
+  checkedName = '',
+  uncheckedTag = '❌\x20',
+  uncheckedName = undefined as string | undefined,
+  initValue = false,
+}) => {
   let checked = initValue;
-  const falseName = '❌\x20' + name;
-  const trueName = '✅\x20' + name;
+  const trueName = checkedTag + checkedName;
+  const falseName = uncheckedTag + (uncheckedName ?? checkedName);
   const currentName = () => (checked ? trueName : falseName);
   const register = () => {
     GM_registerMenuCommand(currentName(), () => {

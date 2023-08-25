@@ -9,13 +9,18 @@ export default defineConfig(({ command }) => {
         userscript: {
           icon: 'https://vitejs.dev/logo.svg',
           namespace: 'https://github.com/lisonge',
+          homepageURL: `https://github.com/gkd-kit/network-extension`,
           author: `lisonge`,
+          name: {
+            'zh-CN': `网络扩展`,
+          },
           description: {
-            '': `network-extension`,
+            '': `Inject GM_XHR to Website`,
+            'zh-CN': `注入GM_XHR到网站`,
           },
           match:
             command == 'serve'
-              ? [`https://i.songe.li/*`]
+              ? [`https://github.com/*`]
               : [`http://*/*`, `https://*/*`],
           noframes: true,
           connect: `*`,

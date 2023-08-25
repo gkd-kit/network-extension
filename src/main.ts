@@ -1,24 +1,15 @@
-import {
-  GM_getValue,
-  GM_setValue,
-  GM_xmlhttpRequest,
-  unsafeWindow,
-  GM_info,
-} from '$';
+import { GM_getValue, GM_setValue, GM_xmlhttpRequest, unsafeWindow } from '$';
 import { useCheckedMenu } from './utils';
 
-const defaultValue = [
-  `gkd-viewer.songe.li`,
-  `gkd-viewer.vercel.app`,
-  `gkd-viewer.netlify.app`,
-  `gkd-viewer.gitee.io`,
-].includes(location.hostname);
-
 const storeKey = `inject_network:` + location.origin;
-const menu = useCheckedMenu(
-  `inject api to current website`,
-  GM_getValue(storeKey, defaultValue),
-);
+const nameI18n: Record<string, string> = {
+  'zh-CN': `注入GM_XHR到当前网站`,
+  '': `Inject GM_XHR to Website`,
+};
+const menu = useCheckedMenu({
+  checkedName: nameI18n[navigator.language] ?? nameI18n[''],
+  initValue: GM_getValue(storeKey, false),
+});
 
 menu.onChange = (checked) => {
   menu.checked = checked;
@@ -29,9 +20,8 @@ menu.onChange = (checked) => {
 };
 
 if (menu.checked) {
-  const __GmNetworkExtension = {
-    GM_info,
+  // @ts-ignore
+  unsafeWindow.__NetworkExtension__ = {
     GM_xmlhttpRequest,
   };
-  Object.assign(unsafeWindow, { __GmNetworkExtension });
 }

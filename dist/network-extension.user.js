@@ -1,20 +1,22 @@
 // ==UserScript==
-// @name         network-extension
-// @namespace    https://github.com/lisonge
-// @version      1.0.6
-// @author       lisonge
-// @description  network-extension
-// @icon         https://vitejs.dev/logo.svg
-// @match        http://*/*
-// @match        https://*/*
-// @connect      *
-// @grant        GM_getValue
-// @grant        GM_info
-// @grant        GM_registerMenuCommand
-// @grant        GM_setValue
-// @grant        GM_unregisterMenuCommand
-// @grant        GM_xmlhttpRequest
-// @grant        unsafeWindow
+// @name               network-extension
+// @name:zh-CN         网络扩展
+// @namespace          https://github.com/lisonge
+// @version            1.0.6
+// @author             lisonge
+// @description        Inject GM_XHR to Website
+// @description:zh-CN  注入GM_XHR到网站
+// @icon               https://vitejs.dev/logo.svg
+// @homepageURL        https://github.com/gkd-kit/network-extension
+// @match              http://*/*
+// @match              https://*/*
+// @connect            *
+// @grant              GM_getValue
+// @grant              GM_registerMenuCommand
+// @grant              GM_setValue
+// @grant              GM_unregisterMenuCommand
+// @grant              GM_xmlhttpRequest
+// @grant              unsafeWindow
 // @noframes
 // ==/UserScript==
 
@@ -22,16 +24,21 @@
   'use strict';
 
   var _GM_getValue = /* @__PURE__ */ (() => typeof GM_getValue != "undefined" ? GM_getValue : void 0)();
-  var _GM_info = /* @__PURE__ */ (() => typeof GM_info != "undefined" ? GM_info : void 0)();
   var _GM_registerMenuCommand = /* @__PURE__ */ (() => typeof GM_registerMenuCommand != "undefined" ? GM_registerMenuCommand : void 0)();
   var _GM_setValue = /* @__PURE__ */ (() => typeof GM_setValue != "undefined" ? GM_setValue : void 0)();
   var _GM_unregisterMenuCommand = /* @__PURE__ */ (() => typeof GM_unregisterMenuCommand != "undefined" ? GM_unregisterMenuCommand : void 0)();
   var _GM_xmlhttpRequest = /* @__PURE__ */ (() => typeof GM_xmlhttpRequest != "undefined" ? GM_xmlhttpRequest : void 0)();
   var _unsafeWindow = /* @__PURE__ */ (() => typeof unsafeWindow != "undefined" ? unsafeWindow : void 0)();
-  const useCheckedMenu = (name, initValue = false) => {
+  const useCheckedMenu = ({
+    checkedTag = "✅ ",
+    checkedName = "",
+    uncheckedTag = "❌ ",
+    uncheckedName = void 0,
+    initValue = false
+  }) => {
     let checked = initValue;
-    const falseName = "❌ " + name;
-    const trueName = "✅ " + name;
+    const trueName = checkedTag + checkedName;
+    const falseName = uncheckedTag + (uncheckedName ?? checkedName);
     const currentName = () => checked ? trueName : falseName;
     const register = () => {
       _GM_registerMenuCommand(currentName(), () => {
@@ -65,17 +72,15 @@
     register();
     return controller;
   };
-  const defaultValue = [
-    `gkd-viewer.songe.li`,
-    `gkd-viewer.vercel.app`,
-    `gkd-viewer.netlify.app`,
-    `gkd-viewer.gitee.io`
-  ].includes(location.hostname);
   const storeKey = `inject_network:` + location.origin;
-  const menu = useCheckedMenu(
-    `inject api to current website`,
-    _GM_getValue(storeKey, defaultValue)
-  );
+  const nameI18n = {
+    "zh-CN": `注入GM_XHR到当前网站`,
+    "": `Inject GM_XHR to Website`
+  };
+  const menu = useCheckedMenu({
+    checkedName: nameI18n[navigator.language] ?? nameI18n[""],
+    initValue: _GM_getValue(storeKey, false)
+  });
   menu.onChange = (checked) => {
     menu.checked = checked;
     _GM_setValue(storeKey, checked);
@@ -84,11 +89,9 @@
     });
   };
   if (menu.checked) {
-    const __GmNetworkExtension = {
-      GM_info: _GM_info,
+    _unsafeWindow.__NetworkExtension__ = {
       GM_xmlhttpRequest: _GM_xmlhttpRequest
     };
-    Object.assign(_unsafeWindow, { __GmNetworkExtension });
   }
 
 })();
