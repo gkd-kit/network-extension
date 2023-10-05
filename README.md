@@ -16,3 +16,7 @@ the config of every origin is isolated, and the default inject config is `false`
 ## install
 
 - from github [network-extension.user.js](https://github.com/gkd-kit/network-extension/raw/main/dist/network-extension.user.js)
+
+- from fastly jsdelivr [network-extension.user.js](https://fastly.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)
+
+- from cdn jsdelivr [network-extension.user.js](https://cdn.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)
