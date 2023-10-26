@@ -13,7 +13,7 @@ unsafeWindow.__NetworkExtension__ = {
 
 ![image](https://github.com/gkd-kit/selector/assets/38517192/995ca497-a73b-4119-9afd-8161f9d303e2)
 
-下图是启用注入后的示例
+下图是启用注入后的示例, 前缀由 `❌` 变更为 `✅`
 
 ![image](https://github.com/gkd-kit/network-extension/assets/38517192/97ee0a77-67f4-4fad-b068-3519097e6e45)
 
