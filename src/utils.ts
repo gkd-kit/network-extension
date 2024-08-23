@@ -3,7 +3,7 @@ import { GM_registerMenuCommand, GM_unregisterMenuCommand } from '$';
 export const useCheckedMenu = ({
   checkedTag = '✅\x20',
   checkedName = '',
-  uncheckedTag = '❌\x20',
+  uncheckedTag = '❎\x20',
   uncheckedName = undefined as string | undefined,
   initValue = false,
 }) => {

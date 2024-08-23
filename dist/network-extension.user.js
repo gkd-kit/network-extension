@@ -2,7 +2,7 @@
 // @name               network-extension
 // @name:zh-CN         网络扩展
 // @namespace          https://github.com/lisonge
-// @version            1.0.6
+// @version            1.0.7
 // @author             lisonge
 // @description        Inject GM_XHR to Website
 // @description:zh-CN  注入GM_XHR到网站
@@ -32,7 +32,7 @@
   const useCheckedMenu = ({
     checkedTag = "✅ ",
     checkedName = "",
-    uncheckedTag = "❌ ",
+    uncheckedTag = "❎ ",
     uncheckedName = void 0,
     initValue = false
   }) => {
@@ -56,8 +56,7 @@
         return checked;
       },
       set checked(newValue) {
-        if (newValue == checked)
-          return;
+        if (newValue == checked) return;
         unregister();
         checked = newValue;
         register();

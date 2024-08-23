@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite';
 import monkey from 'vite-plugin-monkey';
+import pkg from './package.json';
+
+const name = pkg.name.split('/').at(-1)!;
 
 export default defineConfig(({ command }) => {
   return {
@@ -12,6 +15,7 @@ export default defineConfig(({ command }) => {
           homepageURL: `https://github.com/gkd-kit/network-extension`,
           author: `lisonge`,
           name: {
+            '': name,
             'zh-CN': `网络扩展`,
           },
           description: {
@@ -20,10 +24,16 @@ export default defineConfig(({ command }) => {
           },
           match:
             command == 'serve'
-              ? [`https://github.com/*`]
+              ? [`https://github.com/*`, `https://songe.li/*`]
               : [`http://*/*`, `https://*/*`],
           noframes: true,
           connect: `*`,
+        },
+        server: {
+          prefix: false,
+        },
+        build: {
+          fileName: name + '.user.js',
         },
       }),
     ],

@@ -1,17 +1,26 @@
 {
-  "name": "network-extension",
-  "private": true,
-  "version": "1.0.6",
+  "name": "@gkd-kit/network-extension",
+  "version": "1.0.7",
   "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "prettier": "^3.0.2",
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vite-plugin-monkey": "^3.4.2"
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-monkey": "^4.0.6"
+  },
+  "volta": {
+    "node": "22.7.0"
   }
 }
