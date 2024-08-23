@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postpublish": "curl -X PUT https://registry-direct.npmmirror.com/@gkd-kit/network-extension/sync"
   },
   "dependencies": {
     "prettier": "^3.3.3",
