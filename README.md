@@ -23,7 +23,7 @@ unsafeWindow.__NetworkExtension__ = {
 
 每个源(域名)的配置都是隔离的, 默认情况不启用注入, 点击下图中蓝色区域即可在当前源(域名)启用注入
 
-![image](https://github.com/user-attachments/assets/a77192da-7043-49bc-8cfa-f383e8bd5046)
+![image](https://github.com/user-attachments/assets/a0a33481-4814-4315-a8a6-ac514fd53df0)
 
 下图是启用注入后的示例, 前缀由 `❎` 变更为 `✅`
 
