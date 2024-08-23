@@ -13,11 +13,11 @@ unsafeWindow.__NetworkExtension__ = {
 
 点击以下任意链接安装
 
-- from github [network-extension.user.js](https://github.com/gkd-kit/network-extension/raw/main/dist/network-extension.user.js)
-
-- from fastly jsdelivr [network-extension.user.js](https://fastly.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)
-
-- from cdn jsdelivr [network-extension.user.js](https://cdn.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)
+| 安装源    | 安装链接                                                                                                                           |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| npmmirror | [network-extension.user.js](https://registry.npmmirror.com/@gkd-kit/network-extension/latest/files/dist/network-extension.user.js) |
+| jsdelivr  | [network-extension.user.js](https://fastly.jsdelivr.net/gh/gkd-kit/network-extension@main/dist/network-extension.user.js)          |
+| github    | [network-extension.user.js](https://github.com/gkd-kit/network-extension/raw/main/dist/network-extension.user.js)                  |
 
 ## 使用
 
